@@ -6,7 +6,6 @@ import by.pvt.core.domain.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class UserService implements IUser
@@ -30,7 +29,7 @@ public class UserService implements IUser
         {
         return userRepository.getAllUsers();
         }
-
+@Override
     public User searchUserById(long userId)
         {
         return userRepository.seacrhUserById(userId);
@@ -41,7 +40,7 @@ public class UserService implements IUser
         {
         userRepository.delUser(id);
         }
-
+@Override
     public void editUser(User user, Integer age, BigDecimal amount_sum, String firstName, LocalDate last_date_visit, String phone, Status status, String surname)
         {
         user.setId(user.getId());
