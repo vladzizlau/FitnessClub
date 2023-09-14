@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @Table(schema = "guest", name = "user")
 public class User {
     @Id
+    @GeneratedValue
     long id;
     String firstName;
     String surName;
@@ -22,8 +23,7 @@ public class User {
     String phoneNumber;
     @Column (name = "last_visit_date")
     LocalDate lastVisitDate;
-    @Enumerated (EnumType.STRING)
-    Status status;
+    StatusUser status;
     @Column (name = "amount_sum")
     BigDecimal amountSum;
 }

@@ -1,13 +1,13 @@
 package by.pvt.core.Service;
 
-import by.pvt.core.Repository.DBUserRepository;
+import by.pvt.core.repository.DBUserRepoJPA;
 import by.pvt.core.domain.User;
 
 import java.util.List;
 
 public class UserService implements IUser
     {
-        DBUserRepository userRepository = new DBUserRepository();
+        DBUserRepoJPA userRepository = new DBUserRepoJPA();
 
         @Override
         public void addUSer(User user) {

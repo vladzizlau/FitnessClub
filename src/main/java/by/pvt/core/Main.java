@@ -1,16 +1,12 @@
 package by.pvt.core;
 
-import by.pvt.core.Repository.DBUserRepository;
 import by.pvt.core.Service.UserService;
-import by.pvt.core.domain.Status;
-import by.pvt.core.domain.User;
+import by.pvt.core.domain.*;
+import by.pvt.core.repository.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.List;
-
-import static java.util.Calendar.JUNE;
 
 public class Main
     {
@@ -19,9 +15,28 @@ public class Main
 
 
         public static void main(String[] args) {
-//            addUSer();
+  //          addUSer();
 //             deluser();
-            getUsers();
+//            users();
+            test();
+    }
+
+   public static void test(){
+       DBOfferRepoHibernate dbOfferRepoHibernate = new DBOfferRepoHibernate();
+       dbOfferRepoHibernate.addOffer(new Offer("Теннис", 60));
+//       dbOfferRepoHibernate.addOffer(new Offer("Футбол", 100));
+//       dbOfferRepoHibernate.addOffer(new Offer("Плавание", 10));
+       DBOfficeRepoHibernate dbOfficeRepoHibernate = new DBOfficeRepoHibernate();
+       Office office = new Office("Тренажерный зал", 12345L, 20, StatusOffice.Active, new BigDecimal(6));
+       dbOfficeRepoHibernate.addOffice(office);
+       dbOfficeRepoHibernate.editInvenory(1L, 1234567L);
+       dbOfficeRepoHibernate.editCountPeople(2L, 6);
+       dbOfficeRepoHibernate.editCostPerHour(2L, new BigDecimal(100500));
+
+       for (BigDecimal bd: dbOfficeRepoHibernate.getCostForOnePeople("Тренажерный зал")) {
+           System.out.println(bd);
+       }
+
     }
 
     public static void addUSer(){
@@ -33,7 +48,7 @@ public class Main
         user1.setSurName("Коржиков");
         user1.setLastVisitDate(LocalDate.of(2019, Month.JUNE, 3));
         user1.setPhoneNumber("+375175682345");
-        user1.setStatus(Status.Block);
+        user1.setStatus(StatusUser.Block);
 
         User user2 = new User();
         user2.setId(2);
@@ -43,7 +58,7 @@ public class Main
         user2.setSurName("Антипов");
         user2.setLastVisitDate(LocalDate.of(2023, Month.AUGUST, 23));
         user2.setPhoneNumber("+375175685689");
-        user2.setStatus(Status.Active);
+        user2.setStatus(StatusUser.Active);
 
         User user3 = new User();
         user3.setId(3);
@@ -53,7 +68,7 @@ public class Main
         user3.setSurName("Смирнов");
         user3.setLastVisitDate(LocalDate.of(2023, Month.SEPTEMBER, 6));
         user3.setPhoneNumber("+375235684589");
-        user3.setStatus(Status.Premium);
+        user3.setStatus(StatusUser.Premium);
 
         User user4 = new User();
         user4.setId(4);
@@ -63,7 +78,7 @@ public class Main
         user4.setSurName("Скакалов");
         user4.setLastVisitDate(LocalDate.of(2021, Month.DECEMBER, 11));
         user4.setPhoneNumber("+375273248534");
-        user4.setStatus(Status.Active);
+        user4.setStatus(StatusUser.Active);
 
         User user5 = new User();
         user5.setId(5);
@@ -73,7 +88,7 @@ public class Main
         user5.setSurName("Шестаков");
         user5.setLastVisitDate(LocalDate.of(2023, Month.JUNE, 17));
         user5.setPhoneNumber("+3751756767659");
-        user5.setStatus(Status.Active);
+        user5.setStatus(StatusUser.Active);
         userService.addUSer(user1);
         userService.addUSer(user2);
         userService.addUSer(user3);
