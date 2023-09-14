@@ -24,7 +24,7 @@ public class Main
    public static void test(){
        DBOfferRepoHibernate dbOfferRepoHibernate = new DBOfferRepoHibernate();
        dbOfferRepoHibernate.addOffer(new Offer("Теннис", 60));
-//       dbOfferRepoHibernate.addOffer(new Offer("Футбол", 100));
+       dbOfferRepoHibernate.addOffer(new Offer("Футбол", 100));
 //       dbOfferRepoHibernate.addOffer(new Offer("Плавание", 10));
        DBOfficeRepoHibernate dbOfficeRepoHibernate = new DBOfficeRepoHibernate();
        Office office = new Office("Тренажерный зал", 12345L, 20, StatusOffice.Active, new BigDecimal(6));
