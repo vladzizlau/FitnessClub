@@ -13,7 +13,7 @@ import java.util.List;
 
 public class DBUserRepoHibernate implements InterfaceDbUserRepo {
 
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     public DBUserRepoHibernate(){
         sessionFactory = HibernateJavaConfig.getSessionFactory();
