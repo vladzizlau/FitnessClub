@@ -1,7 +1,9 @@
 package by.pvt.core.repository;
 
 import by.pvt.core.config.HibernateJPAConfig;
+import by.pvt.core.domain.PremiumUser;
 import by.pvt.core.domain.User;
+import by.pvt.core.domain.Visits;
 import by.pvt.core.repository.interfaces.InterfaceDbUserRepo;
 
 import javax.persistence.EntityManager;
@@ -41,6 +43,18 @@ public class DBUserRepoJPA implements InterfaceDbUserRepo {
         entityManager.remove(user);
         entityManager.getTransaction().commit();
         entityManager.close();
+    }
+
+@Override
+public List<PremiumUser> getUsersPremium()
+    {
+    return null;
+    }
+
+@Override
+public void addVisit(Visits visit)
+    {
+
     }
 
 

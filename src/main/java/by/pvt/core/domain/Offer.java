@@ -1,4 +1,5 @@
 package by.pvt.core.domain;
+//Услуги (или по другому Сервис)
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,5 +26,10 @@ public class Offer {
     public Offer(String nameService, double price) {
         this.nameService = nameService;
         this.price = price;
+    }
+
+public Offer(Offer offer)
+    {
+
     }
 }

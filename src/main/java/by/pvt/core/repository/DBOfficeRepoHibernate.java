@@ -2,6 +2,7 @@ package by.pvt.core.repository;
 
 import by.pvt.core.config.HibernateJavaConfig;
 import by.pvt.core.domain.Office;
+import by.pvt.core.domain.OfficeSubSelect;
 import by.pvt.core.repository.interfaces.InterfaceDbOfficeRepo;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -100,5 +101,11 @@ public class DBOfficeRepoHibernate implements InterfaceDbOfficeRepo {
         }
         session.close();
         return cost;
+    }
+
+    public List <OfficeSubSelect> getOfficeSubSelect(){
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("Select os from OfficeSubSelect os");
+        return  (List<OfficeSubSelect>) query.getResultList();
     }
 }

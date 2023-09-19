@@ -3,20 +3,20 @@ package by.pvt.core.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+
+@Table(schema = "guest", name = "user")
+@Where(clause = "status = 'Premium'")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table(schema = "guest", name = "user")
-//@MappedSuperclass
-public class User {
+public class PremiumUser {
     @Id
     @SequenceGenerator(name = "seq_User", sequenceName = "user_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_User")

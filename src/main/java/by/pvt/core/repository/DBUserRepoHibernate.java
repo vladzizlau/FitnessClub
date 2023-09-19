@@ -1,7 +1,9 @@
 package by.pvt.core.repository;
 
 import by.pvt.core.config.HibernateJavaConfig;
+import by.pvt.core.domain.PremiumUser;
 import by.pvt.core.domain.User;
+import by.pvt.core.domain.Visits;
 import by.pvt.core.repository.interfaces.InterfaceDbUserRepo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -29,7 +31,8 @@ public class DBUserRepoHibernate implements InterfaceDbUserRepo {
     @Override
     public List<User> getAllUsers() {
         Session session = sessionFactory.openSession();
-        Query query = session.createQuery("Select * from guest.user");
+        session.getTransaction().begin();
+        Query query = session.createQuery("select u from User u");
         List <User> allusers = query.getResultList();
         return allusers;
     }
@@ -49,6 +52,21 @@ public class DBUserRepoHibernate implements InterfaceDbUserRepo {
         session.remove(user);
         session.close();
     }
-
+@Override
+public List <PremiumUser> getUsersPremium(){
+    Session session = sessionFactory.openSession();
+    List <PremiumUser> allusers = session.createQuery("Select p from PremiumUser p").getResultList();
+    System.out.println(allusers);
+    return allusers;
+}
+@Override
+public void addVisit(Visits visit)
+    {
+    Session session = sessionFactory.openSession();
+    session.getTransaction().begin();
+    session.persist(visit);
+    session.getTransaction().commit();
+    session.close();
+}
 
 }

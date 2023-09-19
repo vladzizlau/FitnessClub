@@ -1,8 +1,6 @@
 package by.pvt.core.config;
 
-import by.pvt.core.domain.Offer;
-import by.pvt.core.domain.Office;
-import by.pvt.core.domain.User;
+import by.pvt.core.domain.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -30,8 +28,14 @@ public class HibernateJavaConfig {
 
         configuration = new Configuration();
         configuration.addAnnotatedClass(User.class);
+        configuration.addAnnotatedClass(PremiumUser.class);
+        configuration.addAnnotatedClass(Visits.class);
+        configuration.addAnnotatedClass(Guest.class);
+        configuration.addAnnotatedClass(Workers.class);
+        configuration.addAnnotatedClass(Adress.class);
         configuration.addAnnotatedClass(Office.class);
         configuration.addAnnotatedClass(Offer.class);
+        configuration.addAnnotatedClass(OfficeSubSelect.class);
         configuration.setProperties(properties);
         standardServiceRegistryBuilder = new StandardServiceRegistryBuilder();
         standardServiceRegistryBuilder.applySettings(properties);
