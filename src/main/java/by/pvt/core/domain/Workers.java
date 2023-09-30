@@ -10,8 +10,6 @@ import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(schema = "guest", name = "workers")
 @PrimaryKeyJoinColumn (name = "PK_workers_id")

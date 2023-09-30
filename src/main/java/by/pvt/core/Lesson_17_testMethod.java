@@ -24,7 +24,7 @@ public class Lesson_17_testMethod
         user1.setAge(23);
         user1.setFirstName("Антон");
         user1.setSurName("Коржиков");
-        user1.setAdress(new Adress("Gomel", "B.hmelnickogo", "15", "256954"));
+//        user1.setAdress(new Adress("Gomel", "B.hmelnickogo", "15", "256954"));
     userService.addUSer(user1);
 
     Guest guest1 = new Guest();
@@ -70,7 +70,7 @@ public class Lesson_17_testMethod
     user1.setAge(23);
     user1.setFirstName("Антон");
     user1.setSurName("Коржиков");
-    user1.setAdress(new Adress("Gomel", "B.hmelnickogo", "15", "256954"));
+//    user1.setAdress(new Adress("Gomel", "B.hmelnickogo", "15", "256954"));
     userService.addUSer(user1);
 
     Guest guest1 = new Guest();

@@ -1,20 +1,17 @@
 package by.pvt.core.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 //Помещения
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
 @Table(schema = "guest", name = "office")
 public class Office {
-    // Id, наименование помещения, идентификационный номер,  максимальное количество человек, статус (Активен, на ремонте), стоимость за 1 ч.
 
     @Id
     @GeneratedValue
@@ -30,6 +27,16 @@ public class Office {
     String statusOffice;
     @Column(name = "cost_per_one_hour")
     BigDecimal cost_per_hour;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @JoinColumn(name = "office_id_offer")
+    private Offer offer;
+
+    @OneToMany (mappedBy = "office", cascade = CascadeType.REMOVE)
+//    @JoinColumn(name = "office_id_post")
+    private List<Posts> posts;
 
     public Office(String nameRoom, long roomID, int maxCountPeople, StatusOffice statusOffice, BigDecimal cost_per_hour) {
 

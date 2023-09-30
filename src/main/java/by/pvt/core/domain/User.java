@@ -4,25 +4,24 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 //Стратегия 1
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table(schema = "guest", name = "user")
+//@Entity
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+//@Table(schema = "guest", name = "user")
 //Стратегия 2
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 //@MappedSuperclass
 //Стратегия 3
-//@Entity
+@Entity
 //@Inheritance(strategy = InheritanceType.JOINED)
-//@Table(schema = "guest", name = "user")
+@Table(schema = "guest", name = "user")
 
-public class User
-    {
+
+public class User {
     @Id
-//    @SequenceGenerator(name = "seq_User", sequenceName = "user_seq", allocationSize = 1)
-//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_User")
     @GeneratedValue
     long id;
     @Column(name = "first_name", length = 50)
@@ -37,6 +36,9 @@ public class User
 //    String status;
     @Column(name = "amount_sum")
     BigDecimal amountSum;
-    @Embedded
-    private Adress adress;
-    }
+//    @Embedded
+//    private Adress adress;
+
+    @OneToMany (mappedBy = "user")
+    private List<Posts> posts;
+}

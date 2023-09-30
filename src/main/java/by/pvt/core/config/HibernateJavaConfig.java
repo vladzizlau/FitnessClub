@@ -15,7 +15,7 @@ public class HibernateJavaConfig {
     static {
         Properties properties = new Properties();
 
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");
         properties.setProperty("hibernate.format_sql", "true");
         properties.setProperty("hibernate.use_sql_comments", "true");
         properties.setProperty("hibernate.show_sql", "true");
@@ -36,6 +36,7 @@ public class HibernateJavaConfig {
         configuration.addAnnotatedClass(Office.class);
         configuration.addAnnotatedClass(Offer.class);
         configuration.addAnnotatedClass(OfficeSubSelect.class);
+        configuration.addAnnotatedClass(Posts.class);
         configuration.setProperties(properties);
         standardServiceRegistryBuilder = new StandardServiceRegistryBuilder();
         standardServiceRegistryBuilder.applySettings(properties);

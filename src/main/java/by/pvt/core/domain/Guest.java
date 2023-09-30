@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table (schema = "guest", name = "guest")
 @PrimaryKeyJoinColumn (name = "PK_guest_id")
@@ -25,4 +24,8 @@ public class Guest extends User{
     String status;
     @Column(name = "amount_sum")
     BigDecimal amountSum;
+
+    @OneToMany
+    @JoinColumn(name = "visits_id")
+    private List<Visits> visits;
 }

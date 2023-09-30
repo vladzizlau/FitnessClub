@@ -1,19 +1,12 @@
 package by.pvt.core.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Table(schema = "guest", name = "visits")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Visits
     {
@@ -25,4 +18,9 @@ public class Visits
     double amountSum;
     long id_Offer;
 
+    @ManyToOne
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @JoinColumn(name = "guest_id")
+    private Guest guest;
     }

@@ -6,11 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 //Услуги и предложения
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(schema = "guest", name = "offer")
 public class Offer {
@@ -27,9 +26,10 @@ public class Offer {
         this.nameService = nameService;
         this.price = price;
     }
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "offer_id")
+    private List<Office> office;
 
-public Offer(Offer offer)
-    {
 
-    }
+
 }

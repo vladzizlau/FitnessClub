@@ -13,8 +13,6 @@ import java.time.LocalDate;
 @Table(schema = "guest", name = "user")
 @Where(clause = "status = 'Premium'")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class PremiumUser {
     @Id

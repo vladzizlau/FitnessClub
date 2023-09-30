@@ -14,8 +14,6 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Immutable
-@AllArgsConstructor
-@NoArgsConstructor
 public class OfficeSubSelect {
     @Id
     long id;
