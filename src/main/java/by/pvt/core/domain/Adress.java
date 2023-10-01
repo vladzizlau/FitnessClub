@@ -1,19 +1,18 @@
 package by.pvt.core.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 
 @Embeddable
 @Data
-public class Adress {
+public class Adress
+    {
 
-    String city;
-    String street;
-    String homeNumber;
-    String postCode;  // почтовый индекс
+    private String city;
+    private String street;
+    private String homeNumber;
+    private String postCode;  // почтовый индекс
 
 
-}
+    }

@@ -1,8 +1,6 @@
 package by.pvt.core.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.annotations.Subselect;
 
@@ -14,11 +12,12 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Immutable
-public class OfficeSubSelect {
+public class OfficeSubSelect
+    {
     @Id
-    long id;
-    String name;
-    long inventoryId;
-    BigDecimal price;
+    private long id;
+    private String name;
+    private long inventoryId;
+    private BigDecimal price;
 
-}
+    }

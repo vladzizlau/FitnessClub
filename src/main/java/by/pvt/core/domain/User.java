@@ -20,25 +20,26 @@ import java.util.List;
 @Table(schema = "guest", name = "user")
 
 
-public class User {
+public class User
+    {
     @Id
     @GeneratedValue
-    long id;
+    private long id;
     @Column(name = "first_name", length = 50)
-    String firstName;
+    private String firstName;
     @Column(name = "sur_name")
-    String surName;
-    Integer age;
+    private String surName;
+    private Integer age;
     //    @Column(name = "phone_number", length = 50)
 //    String phoneNumber;
 //    @Column(name = "last_visit_date", length = 30)
 //    LocalDate lastVisitDate;
 //    String status;
     @Column(name = "amount_sum")
-    BigDecimal amountSum;
+    private BigDecimal amountSum;
 //    @Embedded
 //    private Adress adress;
 
-    @OneToMany (mappedBy = "user")
+    @OneToMany(mappedBy = "user")
     private List<Posts> posts;
-}
+    }

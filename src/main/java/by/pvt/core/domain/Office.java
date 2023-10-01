@@ -1,6 +1,9 @@
 package by.pvt.core.domain;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,22 +14,23 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Table(schema = "guest", name = "office")
-public class Office {
+public class Office
+    {
 
     @Id
     @GeneratedValue
     @Column(name = "ID")
-    Long id;
+    private Long id;
     @Column(name = "name_room")
-    String nameRoom;
+    private String nameRoom;
     @Column(name = "id_room")
-    long roomID; //Инвентарный номер помещения
+    private long roomID; //Инвентарный номер помещения
     @Column(name = "max_count_people")
-    int maxCountPeople;
+    private int maxCountPeople;
     @Column(name = "office_status")
-    String statusOffice;
+    private String statusOffice;
     @Column(name = "cost_per_one_hour")
-    BigDecimal cost_per_hour;
+    private BigDecimal cost_per_hour;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @EqualsAndHashCode.Exclude
@@ -34,18 +38,19 @@ public class Office {
     @JoinColumn(name = "office_id_offer")
     private Offer offer;
 
-    @OneToMany (mappedBy = "office", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "office", cascade = CascadeType.REMOVE)
 //    @JoinColumn(name = "office_id_post")
     private List<Posts> posts;
 
-    public Office(String nameRoom, long roomID, int maxCountPeople, StatusOffice statusOffice, BigDecimal cost_per_hour) {
+    public Office(String nameRoom, long roomID, int maxCountPeople, StatusOffice statusOffice, BigDecimal cost_per_hour)
+        {
 
         this.nameRoom = nameRoom;
         this.roomID = roomID;
         this.maxCountPeople = maxCountPeople;
         this.statusOffice = String.valueOf(statusOffice);
         this.cost_per_hour = cost_per_hour;
+        }
+
+
     }
-
-
-}

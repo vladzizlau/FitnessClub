@@ -108,4 +108,16 @@ public class DBOfficeRepoHibernate implements InterfaceDbOfficeRepo {
         Query query = session.createQuery("Select os from OfficeSubSelect os");
         return  (List<OfficeSubSelect>) query.getResultList();
     }
+
+
+//Выручка со всех помещений за N месяцев
+public double getYield(int countmonth)
+    {
+    Session session = sessionFactory.openSession();
+    Query query = session.createQuery("select sum (cost_per_hour) from Office o");
+    BigDecimal yield = (BigDecimal) query.getSingleResult();
+    return Double.valueOf(String.valueOf(yield)) * countmonth;
+    }
+
+
 }

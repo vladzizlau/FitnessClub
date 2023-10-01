@@ -17,4 +17,17 @@ public class WorkersService implements IWorkers
         {
         workersRepo.addGuest(work);
         }
+
+    @Override
+    public Workers getMostPaid()
+        {
+        return workersRepo.getMostPaid();
+        }
+
+    @Override
+    public Workers getMostUnpaid()
+        {
+        return workersRepo.getMostUnpaid();
+        }
+
     }

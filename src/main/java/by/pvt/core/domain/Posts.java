@@ -13,14 +13,15 @@ import java.time.LocalDate;
 @Entity
 @NoArgsConstructor
 @Table(schema = "guest", name = "post")
-public class Posts {
+public class Posts
+    {
     @Id
     @GeneratedValue
-    long id;
-    long client_id;
-    long id_office;
-    LocalDate post_data;
-    Time post_time;
+    private long id;
+    private long client_id;
+    private long id_office;
+    private LocalDate post_data;
+    private Time post_time;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @EqualsAndHashCode.Exclude
@@ -35,10 +36,11 @@ public class Posts {
     @JoinColumn(name = "post_office_id")
     private Office office;
 
-    public Posts(long client_id, long id_office, LocalDate post_data, Time post_time) {
+    public Posts(long client_id, long id_office, LocalDate post_data, Time post_time)
+        {
         this.client_id = client_id;
         this.id_office = id_office;
         this.post_data = post_data;
         this.post_time = post_time;
+        }
     }
-}

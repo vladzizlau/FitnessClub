@@ -1,6 +1,8 @@
 package by.pvt.core.domain;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,11 +14,11 @@ public class Visits
     {
     @Id
     @GeneratedValue
-    long id;
-    long userId;
-    LocalDate lastVisit;
-    double amountSum;
-    long id_Offer;
+    private long id;
+    private long userId;
+    private LocalDate lastVisit;
+    private double amountSum;
+    private long id_Offer;
 
     @ManyToOne
     @ToString.Exclude

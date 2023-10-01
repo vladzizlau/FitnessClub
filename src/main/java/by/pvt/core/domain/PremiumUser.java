@@ -1,8 +1,6 @@
 package by.pvt.core.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -14,23 +12,24 @@ import java.time.LocalDate;
 @Where(clause = "status = 'Premium'")
 @Data
 @Entity
-public class PremiumUser {
+public class PremiumUser
+    {
     @Id
     @SequenceGenerator(name = "seq_User", sequenceName = "user_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_User")
-    long id;
+    private long id;
     @Column(name = "first_name", length = 50)
-    String firstName;
+    private String firstName;
     @Column(name = "sur_name")
-    String surName;
-    Integer age;
+    private String surName;
+    private Integer age;
     @Column(name = "phone_number", length = 50)
-    String phoneNumber;
+    private String phoneNumber;
     @Column(name = "last_visit_date", length = 30)
-    LocalDate lastVisitDate;
-    String status;
+    private LocalDate lastVisitDate;
+    private String status;
     @Column(name = "amount_sum")
-    BigDecimal amountSum;
+    private BigDecimal amountSum;
     @Embedded
     private Adress adress;
-}
+    }

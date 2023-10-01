@@ -17,5 +17,8 @@ public interface InterfaceDbUserRepo {
 
 List <PremiumUser> getUsersPremium();
 
+//Поиск по имени
+User getByName(String name);
+
 void addVisit(Visits visit);
 }

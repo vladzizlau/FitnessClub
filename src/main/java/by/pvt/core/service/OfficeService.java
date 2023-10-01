@@ -5,15 +5,24 @@ import by.pvt.core.repository.DBOfficeRepoHibernate;
 
 import java.util.List;
 
-public class OfficeService implements IOffice{
+public class OfficeService implements IOffice
+    {
     private final DBOfficeRepoHibernate officeRepository;
 
-    public OfficeService(){
+    public OfficeService()
+        {
         officeRepository = new DBOfficeRepoHibernate();
-    }
+        }
 
-@Override
-    public List<OfficeSubSelect> getSmallOffice(){
+    @Override
+    public List<OfficeSubSelect> getSmallOffice()
+        {
         return officeRepository.getOfficeSubSelect();
+        }
+
+    public Double getYield(int countmonth)
+        {
+        return officeRepository.getYield(countmonth);
+        }
+
     }
-}

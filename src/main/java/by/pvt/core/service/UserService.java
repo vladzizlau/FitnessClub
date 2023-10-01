@@ -35,6 +35,10 @@ public class UserService implements IUser
         userRepository.delUser(id);
         }
 
+    public User getByName(String name){
+    return userRepository.getByName(name);
+    }
+
     @Override
     public void addVisit(Visits visit)
         {
