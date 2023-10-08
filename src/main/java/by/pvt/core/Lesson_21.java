@@ -5,9 +5,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 
 public class Lesson_21 {
     private SessionFactory sessionFactory;
@@ -21,8 +20,7 @@ public class Lesson_21 {
         Query query = session.createQuery("select sum (moneyMonth) from Workers w");
         Long days = end.toEpochDay() - start.toEpochDay();
 
-        Double allMoney = (Double) query.getSingleResult() / 30 * days;
-        return allMoney;
+        return (Double) query.getSingleResult() / 30 * days;
 
     }
     public Double getMyCash(LocalDate start, LocalDate end)
@@ -31,8 +29,8 @@ public class Lesson_21 {
         Query query = session.createQuery("select sum (cost_per_hour) from Office o");
         Long days = end.toEpochDay() - start.toEpochDay();
 //12 рабочих часов в день
-        Double allMoney =  Double.parseDouble(query.getSingleResult().toString()) * 12 * days;
-        return allMoney;
+        return Double.parseDouble(query.getSingleResult().toString()) * 12 * days;
+
 
     }
 
