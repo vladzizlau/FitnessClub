@@ -1,5 +1,6 @@
 package by.pvt.core.repository.interfaces;
 
+import by.pvt.core.domain.Guest;
 import by.pvt.core.domain.PremiumUser;
 import by.pvt.core.domain.User;
 import by.pvt.core.domain.Visits;
@@ -21,4 +22,8 @@ List <PremiumUser> getUsersPremium();
 User getByName(String name);
 
 void addVisit(Visits visit);
+
+    List<User> getUserForAge(int minAge, int maxAge);
+
+    List<Guest> getVisitsByNameAndAge(String name, Integer age);
 }

@@ -1,9 +1,6 @@
 package by.pvt.core.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -12,6 +9,7 @@ import java.util.List;
 //Помещения
 @Data
 @Entity
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(schema = "guest", name = "office")
 public class Office

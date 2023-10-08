@@ -2,6 +2,8 @@ package by.pvt.core.service;
 
 import by.pvt.core.domain.Workers;
 
+import java.util.List;
+
 public interface IWorkers
     {
     void addWorker(Workers work);
@@ -9,4 +11,6 @@ public interface IWorkers
     Workers getMostPaid();
 
     Workers getMostUnpaid();
+
+        List<Workers> getAllWorkersCriteria();
     }

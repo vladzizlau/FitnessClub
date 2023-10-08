@@ -1,12 +1,11 @@
 package by.pvt.core;
 
 import by.pvt.core.domain.*;
+import by.pvt.core.repository.DBGuestRepoHibernate;
 import by.pvt.core.repository.DBOfficeRepoHibernate;
 import by.pvt.core.repository.DBPostRepoHibernate;
-import by.pvt.core.service.OfferService;
-import by.pvt.core.service.OfficeService;
-import by.pvt.core.service.UserService;
-import by.pvt.core.service.WorkersService;
+import by.pvt.core.repository.DBWorkersRepoHibernate;
+import by.pvt.core.service.*;
 
 import java.math.BigDecimal;
 import java.sql.Time;
@@ -14,17 +13,18 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
 
-public class Main
-    {
+public class Main {
     static UserService userService = new UserService();
     static OfferService offerService = new OfferService();
     static OfficeService officeService = new OfficeService();
+    static GuestService guestService = new GuestService();
 
-    public static void main(String[] args)
-        {
+
+    public static void main(String[] args) {
 //            addUser();
 //                 addOffice();
 //addWorkers();
+//        addGuest();
 //             deluser();
 //            getUsers();
 //            getUserPremium();
@@ -39,20 +39,24 @@ public class Main
 //        Lesson_18 lesson18 = new Lesson_18();
 //        lesson18.addDb();
 
-        Lesson_19 lesson19 = new Lesson_19();
+//        Lesson_19 lesson19 = new Lesson_19();
 //    lesson19.addWorkers();
 //    lesson19.getByName();
 //    lesson19.getMostPaid();
 //lesson19.getMostUnpaid();
-        lesson19.getYield();
+//        lesson19.getYield();
+
+//            Lesson_21 lesson21 = new Lesson_21();
+//            lesson21.getMoneyWorks();
 
 //
-//        DBWorkersRepoHibernate workerRepository = new DBWorkersRepoHibernate();
-//        System.out.println(workerRepository.getCountGuest());
-        }
+        DBWorkersRepoHibernate workerRepository = new DBWorkersRepoHibernate();
+//        System.out.println(workerRepository.getUserForAge(15, 33));
+//        System.out.println(workerRepository.getOfficeMaxCountPeopleAndPrice(new BigDecimal(3), 1));
+//        System.out.println(workerRepository.getVisitsByNameAndAge("Филипп", 18));
+    }
 
-    public static void test()
-        {
+    public static void test() {
 //       dbOfficeRepoHibernate.editInvenory(1L, 1234567L);
 //       dbOfficeRepoHibernate.editCountPeople(2L, 6);
 //       dbOfficeRepoHibernate.editCostPerHour(2L, new BigDecimal(100500));
@@ -64,11 +68,10 @@ public class Main
 //        System.out.println(officeService.getSmallOffice());
 
 
-        }
+    }
 
 
-    public static void addUser()
-        {
+    public static void addUser() {
         User user1 = new User();
         user1.setAge(23);
         user1.setAmountSum(BigDecimal.valueOf(500));
@@ -124,10 +127,9 @@ public class Main
         userService.addUSer(user4);
         userService.addUSer(user5);
 
-        }
+    }
 
-    private static void addOffice()
-        {
+    private static void addOffice() {
         DBOfficeRepoHibernate dbOfficeRepoHibernate = new DBOfficeRepoHibernate();
         Office office = new Office("Тренажерный зал", 12341L, 20, StatusOffice.Active, new BigDecimal(6));
         Office office2 = new Office("Теннисный корт", 12342L, 10, StatusOffice.Active, new BigDecimal(10));
@@ -135,39 +137,55 @@ public class Main
         dbOfficeRepoHibernate.addOffice(office);
         dbOfficeRepoHibernate.addOffice(office2);
         dbOfficeRepoHibernate.addOffice(office3);
-        }
+    }
 
-    private static void deluser()
-        {
+    private static void addGuest(){
+        DBGuestRepoHibernate dbRepository = new DBGuestRepoHibernate();
+        Guest guest = new Guest();
+        guest.setFirstName("Алексей");
+        guest.setAge(18);
+        guest.setFirstVisitDate(LocalDate.of(2023, Month.AUGUST, 23));
+
+        Guest guest2 = new Guest();
+        guest2.setFirstName("Филипп");
+        guest2.setAge(40);
+        guest2.setFirstVisitDate(LocalDate.of(2023, Month.JUNE, 16));
+
+        Guest guest3 = new Guest();
+        guest3.setFirstName("Сергей");
+        guest3.setAge(34);
+        guest3.setFirstVisitDate(LocalDate.of(2023, Month.JANUARY, 4));
+        dbRepository.addGuest(guest);
+        dbRepository.addGuest(guest2);
+        dbRepository.addGuest(guest3);
+    }
+
+    private static void deluser() {
         userService.delUser(1);
         userService.delUser(2);
         userService.delUser(3);
         userService.delUser(4);
         userService.delUser(5);
-        }
+    }
 
-    private static void getUsers()
-        {
+    private static void getUsers() {
         System.out.println(userService.getAllUsers());
-        }
+    }
 
-    private static void addOffer()
-        {
+    private static void addOffer() {
         Offer offer = new Offer("Теннис", 60);
         Offer offer1 = new Offer("Футбол", 100);
         Offer offer2 = new Offer("Плавание", 10);
         offerService.addOffer(offer);
         offerService.addOffer(offer1);
         offerService.addOffer(offer2);
-        }
+    }
 
-    private static void getUserPremium()
-        {
+    private static void getUserPremium() {
         System.out.println(userService.getUserPremium());
-        }
+    }
 
-    private static void addVisit()
-        {
+    private static void addVisit() {
         Visits visit = new Visits();
         Visits visit1 = new Visits();
         Visits visit2 = new Visits();
@@ -190,11 +208,10 @@ public class Main
         userService.addVisit(visit);
         userService.addVisit(visit1);
         userService.addVisit(visit2);
-        }
+    }
 
 
-    public static void addPosts()
-        {
+    public static void addPosts() {
         DBPostRepoHibernate postRepo = new DBPostRepoHibernate();
         Posts post1 = new Posts(1L, 32452L, LocalDate.of(2023, Month.AUGUST, 23), Time.valueOf("10:05:30"));
         Posts post2 = new Posts(1L, 32452L, LocalDate.of(2023, Month.AUGUST, 23), Time.valueOf("11:05:30"));
@@ -207,10 +224,9 @@ public class Main
         postRepo.addPost(post3);
         postRepo.addPost(post4);
         postRepo.addPost(post5);
-        }
+    }
 
-    public static void addWorkers()
-        {
+    public static void addWorkers() {
         WorkersService workersService = new WorkersService();
 
         Workers worker = new Workers();
@@ -242,6 +258,6 @@ public class Main
         worker4.setMoneyMonth(750);
         workersService.addWorker(worker4);
 
-        }
-
     }
+
+}

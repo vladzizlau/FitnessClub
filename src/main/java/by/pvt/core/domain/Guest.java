@@ -9,10 +9,8 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(schema = "guest", name = "guest")
 @PrimaryKeyJoinColumn(name = "PK_guest_id")
-public class Guest extends User
-    {
+public class Guest extends User {
 
     @Column(name = "phone_number", length = 50)
     private String phoneNumber;
@@ -27,4 +25,4 @@ public class Guest extends User
     @OneToMany
     @JoinColumn(name = "visits_id")
     private List<Visits> visits;
-    }
+}

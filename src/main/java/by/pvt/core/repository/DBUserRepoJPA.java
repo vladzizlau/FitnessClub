@@ -51,7 +51,12 @@ public List<PremiumUser> getUsersPremium()
     return null;
     }
 
-@Override
+    @Override
+    public User getByName(String name) {
+        return null;
+    }
+
+    @Override
 public void addVisit(Visits visit)
     {
 

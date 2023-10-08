@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class Visits
     {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy =GenerationType.SEQUENCE)
     private long id;
     private long userId;
     private LocalDate lastVisit;

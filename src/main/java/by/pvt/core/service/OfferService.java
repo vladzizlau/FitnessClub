@@ -17,4 +17,8 @@ public void addOffer(Offer offer)
     }
 
 
+    public Long getActivity() {
+       return offerRepository.getActivity();
+    }
+
 }

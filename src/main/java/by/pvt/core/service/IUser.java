@@ -16,4 +16,6 @@ public interface IUser
     public void delUser(long id);
 
     void addVisit(Visits visit);
+
+        List<User> getUserForAge(int minAge, int maxAge);
     }

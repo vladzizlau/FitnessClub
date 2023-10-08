@@ -11,4 +11,6 @@ public interface InterfaceDbOfferRepo {
     Offer findById(Long offerID);
 
     void delOffer(long id);
+
+    Long getActivity();
 }

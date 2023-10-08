@@ -23,7 +23,7 @@ import java.util.List;
 public class User
     {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.SEQUENCE)
     private long id;
     @Column(name = "first_name", length = 50)
     private String firstName;

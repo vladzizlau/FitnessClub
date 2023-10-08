@@ -1,6 +1,8 @@
 package by.pvt.core.repository.interfaces;
 
 import by.pvt.core.domain.Office;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface InterfaceDbOfficeRepo {
@@ -14,4 +16,6 @@ public interface InterfaceDbOfficeRepo {
     Office findById(Long officeID);
 
     void delOffice(long id);
+
+    List<Office> getOfficeMaxCountPeopleAndPrice(BigDecimal one, int two);
 }
