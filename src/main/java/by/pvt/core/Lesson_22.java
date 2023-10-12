@@ -45,13 +45,6 @@ public class Lesson_22 {
         System.out.println(office);
         session.close();
 
-
-//        Session session2 = sessionFactory.openSession();
-//        org.hibernate.query.Query query2 = session2.createQuery("Select o from Offer o");
-//        List offer = query2.getResultList();
-//        session.close();
-//        org.hibernate.query.Query query3 = session.createQuery("Select w from Office w where offer_id = :id").setParameter("id", Id);
-//        List office1 = query.getResultList();
         Session session3 = sessionFactory.openSession();
         Office office1 = session3.load(Office.class, id);
         System.out.println(office1);
