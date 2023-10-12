@@ -48,9 +48,14 @@ public class Main {
 
 //            Lesson_21 lesson21 = new Lesson_21();
 //            lesson21.getMoneyWorks();
+//        lesson21.getMyCash();
 
-//
-        DBWorkersRepoHibernate workerRepository = new DBWorkersRepoHibernate();
+
+        Lesson_22 lesson22 = new Lesson_22();
+//        lesson22.firstMethod(6L);
+        lesson22.secondMethod(5L);
+
+//        DBWorkersRepoHibernate workerRepository = new DBWorkersRepoHibernate();
 //        System.out.println(workerRepository.getUserForAge(15, 33));
 //        System.out.println(workerRepository.getOfficeMaxCountPeopleAndPrice(new BigDecimal(3), 1));
 //        System.out.println(workerRepository.getVisitsByNameAndAge("Филипп", 18));

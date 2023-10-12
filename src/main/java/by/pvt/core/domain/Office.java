@@ -1,6 +1,7 @@
 package by.pvt.core.domain;
 
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,6 +12,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@org.hibernate.annotations.Cache (usage = CacheConcurrencyStrategy.READ_WRITE, region = "office")
 @Table(schema = "guest", name = "office")
 public class Office
     {
@@ -36,9 +38,8 @@ public class Office
     @JoinColumn(name = "office_id_offer")
     private Offer offer;
 
-    @OneToMany(mappedBy = "office", cascade = CascadeType.REMOVE)
-//    @JoinColumn(name = "office_id_post")
-    private List<Posts> posts;
+//    @OneToMany(mappedBy = "office", cascade = CascadeType.REMOVE)
+//    private List<Posts> posts;
 
     public Office(String nameRoom, long roomID, int maxCountPeople, StatusOffice statusOffice, BigDecimal cost_per_hour)
         {

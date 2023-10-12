@@ -1,6 +1,7 @@
 package by.pvt.core.repository;
 
 import by.pvt.core.config.HibernateJPAConfig;
+import by.pvt.core.domain.Guest;
 import by.pvt.core.domain.PremiumUser;
 import by.pvt.core.domain.User;
 import by.pvt.core.domain.Visits;
@@ -60,6 +61,16 @@ public List<PremiumUser> getUsersPremium()
 public void addVisit(Visits visit)
     {
 
+    }
+
+    @Override
+    public List<User> getUserForAge(int minAge, int maxAge) {
+        return null;
+    }
+
+    @Override
+    public List<Guest> getVisitsByNameAndAge(String name, Integer age) {
+        return null;
     }
 
 

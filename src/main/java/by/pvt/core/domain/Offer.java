@@ -1,7 +1,10 @@
 package by.pvt.core.domain;
 //Услуги (или по другому Сервис)
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,6 +12,9 @@ import java.util.List;
 //Услуги и предложения
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+
 @Table(schema = "guest", name = "offer")
 public class Offer
     {
