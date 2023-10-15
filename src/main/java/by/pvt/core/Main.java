@@ -6,6 +6,9 @@ import by.pvt.core.repository.DBOfficeRepoHibernate;
 import by.pvt.core.repository.DBPostRepoHibernate;
 import by.pvt.core.repository.DBWorkersRepoHibernate;
 import by.pvt.core.service.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.math.BigDecimal;
 import java.sql.Time;
@@ -50,29 +53,34 @@ public class Main {
 //            lesson21.getMoneyWorks();
 //        lesson21.getMyCash();
 
-
-        Lesson_22 lesson22 = new Lesson_22();
-//        lesson22.firstMethod(6L);
-        lesson22.secondMethod(5L);
+//        UserService us = new UserService();
+//       us.getAllUsers();
 
 //        DBWorkersRepoHibernate workerRepository = new DBWorkersRepoHibernate();
 //        System.out.println(workerRepository.getUserForAge(15, 33));
 //        System.out.println(workerRepository.getOfficeMaxCountPeopleAndPrice(new BigDecimal(3), 1));
 //        System.out.println(workerRepository.getVisitsByNameAndAge("Филипп", 18));
+
+        startLesson23();
+        startLesson23_2();
     }
 
-    public static void test() {
-//       dbOfficeRepoHibernate.editInvenory(1L, 1234567L);
-//       dbOfficeRepoHibernate.editCountPeople(2L, 6);
-//       dbOfficeRepoHibernate.editCostPerHour(2L, new BigDecimal(100500));
+    public static void startLesson23() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
+        Lesson_23 lesson23 = applicationContext.getBean("firstApp", Lesson_23.class);
+        long before = System.nanoTime();
+        lesson23.hello();
+        long after = System.nanoTime();
+        System.out.println(after - before);
+    }
 
-//       for (BigDecimal bd: dbOfficeRepoHibernate.getCostForOnePeople("Тренажерный зал")) {
-//           System.out.println(bd);
-//       }
-//        OfficeService officeService = new OfficeService();
-//        System.out.println(officeService.getSmallOffice());
-
-
+    public static void startLesson23_2(){
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Lesson_23_2.class);
+        Lesson_23_2 lesson_23_2 = applicationContext.getBean(Lesson_23_2.class);
+        long before = System.nanoTime();
+        lesson_23_2.sendMessage();
+        long after = System.nanoTime();
+        System.out.println(after-before);
     }
 
 
@@ -144,7 +152,7 @@ public class Main {
         dbOfficeRepoHibernate.addOffice(office3);
     }
 
-    private static void addGuest(){
+    private static void addGuest() {
         DBGuestRepoHibernate dbRepository = new DBGuestRepoHibernate();
         Guest guest = new Guest();
         guest.setFirstName("Алексей");
