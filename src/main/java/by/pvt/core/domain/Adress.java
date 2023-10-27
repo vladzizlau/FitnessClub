@@ -1,11 +1,13 @@
 package by.pvt.core.domain;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
 @Embeddable
 @Data
+
 public class Adress
     {
 

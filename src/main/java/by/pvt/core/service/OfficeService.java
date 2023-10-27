@@ -3,21 +3,23 @@ package by.pvt.core.service;
 import by.pvt.core.domain.Office;
 import by.pvt.core.domain.OfficeSubSelect;
 import by.pvt.core.repository.DBOfficeRepoHibernate;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import java.math.BigDecimal;
 import java.util.List;
-
+@Service
 public class OfficeService implements IOffice
     {
     private final DBOfficeRepoHibernate officeRepository;
 
-    public OfficeService()
+    public OfficeService(DBOfficeRepoHibernate dbOfficeRepoHibernate)
         {
-        officeRepository = new DBOfficeRepoHibernate();
+        officeRepository = dbOfficeRepoHibernate;
         }
 
     @Override

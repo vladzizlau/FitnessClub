@@ -1,28 +1,30 @@
 package by.pvt.core.repository;
 
-import by.pvt.core.config.HibernateJavaConfig;
+//import by.pvt.core.config.HibernateJavaConfig;
 import by.pvt.core.domain.Guest;
 import by.pvt.core.domain.PremiumUser;
 import by.pvt.core.domain.User;
 import by.pvt.core.domain.Visits;
 import by.pvt.core.repository.interfaces.InterfaceDbUserRepo;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import java.util.List;
-
+@Repository
 public class DBUserRepoHibernate implements InterfaceDbUserRepo {
 
-    private final SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
-    public DBUserRepoHibernate() {
-        sessionFactory = HibernateJavaConfig.getSessionFactory();
-    }
+
 
     @Override
     public void addUSer(User user) {
@@ -105,7 +107,7 @@ public class DBUserRepoHibernate implements InterfaceDbUserRepo {
         cQuery.select(guest).where(criteriaBuilder.and(criteriaBuilder.equal(guest.get("firstName"), name),
                 criteriaBuilder.gt(guest.get("age"), age)));
         List<Guest> guestList = entityManager.createQuery(cQuery).getResultList();
-        guestList.forEach(s -> System.out.println(s.getFirstVisitDate() + " " + s.getLastVisitDate()));
+//        guestList.forEach(s -> System.out.println(s.getFirstVisitDate() + " " + s.getLastVisitDate()));
         return guestList;
     }
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 //Услуги и предложения
@@ -19,7 +19,7 @@ import java.util.List;
 public class Offer
     {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private long id;
     @Column(name = "name_service")

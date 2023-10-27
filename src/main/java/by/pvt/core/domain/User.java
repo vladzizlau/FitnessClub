@@ -2,7 +2,7 @@ package by.pvt.core.domain;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -23,7 +23,7 @@ import java.util.List;
 public class User
     {
     @Id
-    @GeneratedValue (strategy = GenerationType.SEQUENCE)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "first_name", length = 50)
     private String firstName;

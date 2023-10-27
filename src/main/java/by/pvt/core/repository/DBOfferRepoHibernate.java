@@ -1,23 +1,23 @@
 package by.pvt.core.repository;
 
-import by.pvt.core.config.HibernateJavaConfig;
+//import by.pvt.core.config.HibernateJavaConfig;
 import by.pvt.core.domain.Offer;
 import by.pvt.core.repository.interfaces.InterfaceDbOfferRepo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
+
 import java.util.List;
-
+@Repository
 public class DBOfferRepoHibernate implements InterfaceDbOfferRepo {
+
+    @Autowired
     private SessionFactory sessionFactory;
 
-    public DBOfferRepoHibernate() {
-        sessionFactory = HibernateJavaConfig.getSessionFactory();
-    }
+
 
     @Override
     public void addOffer(Offer offer) {
@@ -51,12 +51,12 @@ public class DBOfferRepoHibernate implements InterfaceDbOfferRepo {
         session.remove(offer);
         session.close();
     }
-@Override
-    public Long getActivity() {
-        EntityManager entityManager = sessionFactory.createEntityManager();
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
-        criteriaQuery.select(criteriaBuilder.min(criteriaQuery.from(Offer.class).get("price")));
-        return entityManager.createQuery(criteriaQuery).getSingleResult();
-    }
+//@Override
+//    public Long getActivity() {
+//        EntityManager entityManager = sessionFactory.createEntityManager();
+//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//        CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
+//        criteriaQuery.select(criteriaBuilder.min(criteriaQuery.from(Offer.class).get("price")));
+//        return entityManager.createQuery(criteriaQuery).getSingleResult();
+//    }
 }

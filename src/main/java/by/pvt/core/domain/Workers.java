@@ -2,7 +2,7 @@ package by.pvt.core.domain;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Data
@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class Workers
     {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDate startJob;
     private LocalDate endJob;

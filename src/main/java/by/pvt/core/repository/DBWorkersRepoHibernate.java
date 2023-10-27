@@ -1,24 +1,26 @@
 package by.pvt.core.repository;
 
-import by.pvt.core.config.HibernateJavaConfig;
+
+import by.pvt.core.config.HibernateConfig;
 import by.pvt.core.domain.*;
 import by.pvt.core.repository.interfaces.InterfaceDbWorkersRepo;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.criteria.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
-
+@Repository
 public class DBWorkersRepoHibernate implements InterfaceDbWorkersRepo {
-    private final SessionFactory sessionFactory;
 
-    public DBWorkersRepoHibernate() {
-        sessionFactory = HibernateJavaConfig.getSessionFactory();
-    }
+   private SessionFactory sessionFactory;
 
     @Override
     public void addGuest(Workers work) {

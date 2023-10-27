@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Time;
 import java.time.LocalDate;
 
@@ -16,7 +16,7 @@ import java.time.LocalDate;
 public class Posts
     {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private long client_id;
     private long id_office;

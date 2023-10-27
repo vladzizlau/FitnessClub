@@ -3,12 +3,11 @@ package by.pvt.core.domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.*;
 import java.sql.Time;
 import java.time.LocalDate;
+
+// Сущность записи
 @Data
 @Entity
 @NoArgsConstructor
@@ -16,7 +15,7 @@ import java.time.LocalDate;
 
 public class Registration {
         @Id
-        @GeneratedValue
+        @GeneratedValue (strategy = GenerationType.IDENTITY)
         private long id;
         private long client_id;
         private long id_office;

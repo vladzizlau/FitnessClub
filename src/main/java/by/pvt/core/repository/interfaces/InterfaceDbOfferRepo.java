@@ -12,5 +12,5 @@ public interface InterfaceDbOfferRepo {
 
     void delOffer(long id);
 
-    Long getActivity();
+
 }

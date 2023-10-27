@@ -1,6 +1,6 @@
 package by.pvt.core;
 
-import by.pvt.core.config.HibernateJavaConfig;
+//import by.pvt.core.config.HibernateJavaConfig;
 
 
 import by.pvt.core.domain.Office;
@@ -9,17 +9,18 @@ import by.pvt.core.repository.DBOfficeRepoHibernate;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 import java.util.List;
 
 public class Lesson_22 {
-
+@Autowired
     private SessionFactory sessionFactory;
 
-    public Lesson_22() {
-        sessionFactory = HibernateJavaConfig.getSessionFactory();
-    }
+//    public Lesson_22() {
+//        sessionFactory = HibernateJavaConfig.getSessionFactory();
+//    }
 
 
     public void firstMethod(Long Id) {

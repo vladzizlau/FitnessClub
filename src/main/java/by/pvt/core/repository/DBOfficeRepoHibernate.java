@@ -1,30 +1,30 @@
 package by.pvt.core.repository;
 
-import by.pvt.core.config.HibernateJavaConfig;
 import by.pvt.core.domain.Office;
 import by.pvt.core.domain.OfficeSubSelect;
 import by.pvt.core.repository.interfaces.InterfaceDbOfficeRepo;
-import org.hibernate.Criteria;
+import net.sf.ehcache.search.expression.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-
+@Repository
 public class DBOfficeRepoHibernate implements InterfaceDbOfficeRepo {
+    @Autowired
     private SessionFactory sessionFactory;
 
-    public DBOfficeRepoHibernate() {
-        sessionFactory = HibernateJavaConfig.getSessionFactory();
-    }
+//    public DBOfficeRepoHibernate() {
+//        sessionFactory = HibernateJavaConfig.getSessionFactory();
+//    }
 
     @Override
     public void addOffice(Office office) {
@@ -40,7 +40,6 @@ public class DBOfficeRepoHibernate implements InterfaceDbOfficeRepo {
         Session session = sessionFactory.openSession();
         Office office = session.get(Office.class, id);
         session.detach(office);
-        office.setId(null);
         session.getTransaction().begin();
         office.setRoomID(inventaryNumber);
         session.persist(office);
@@ -92,19 +91,19 @@ public class DBOfficeRepoHibernate implements InterfaceDbOfficeRepo {
         session.close();
     }
 
-    public List<BigDecimal> getCostForOnePeople(String nameRoom) {
-        ArrayList<BigDecimal> cost = new ArrayList<>();
-        Session session = sessionFactory.openSession();
-        Criteria officeCriteria = session.createCriteria(Office.class);
-        officeCriteria.add(Restrictions.eq("nameRoom", nameRoom));
-        List<Office> offices = officeCriteria.add(Restrictions.like("nameRoom", nameRoom, MatchMode.ANYWHERE)).list();
-        for (Office office : offices) {
-            BigDecimal costForPoeple = office.getCost_per_hour().divide(BigDecimal.valueOf(office.getMaxCountPeople()));
-            cost.add(costForPoeple);
-        }
-        session.close();
-        return cost;
-    }
+//    public List<BigDecimal> getCostForOnePeople(String nameRoom) {
+//        ArrayList<BigDecimal> cost = new ArrayList<>();
+//        Session session = sessionFactory.openSession();
+//        Criteria officeCriteria = session.createCriteria(Office.class);
+//        officeCriteria.add(Restrictions.eq("nameRoom", nameRoom));
+//        List<Office> offices = officeCriteria.add(Restrictions.like("nameRoom", nameRoom, MatchMode.ANYWHERE)).list();
+//        for (Office office : offices) {
+//            BigDecimal costForPoeple = office.getCost_per_hour().divide(BigDecimal.valueOf(office.getMaxCountPeople()));
+//            cost.add(costForPoeple);
+//        }
+//        session.close();
+//        return cost;
+//    }
 
     public List<OfficeSubSelect> getOfficeSubSelect() {
         Session session = sessionFactory.openSession();

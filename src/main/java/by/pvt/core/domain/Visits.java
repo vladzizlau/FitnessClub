@@ -4,7 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Table(schema = "guest", name = "visits")
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class Visits
     {
     @Id
-    @GeneratedValue (strategy =GenerationType.SEQUENCE)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
     private long userId;
     private LocalDate lastVisit;

@@ -1,19 +1,21 @@
 package by.pvt.core;
 
-import by.pvt.core.config.HibernateJavaConfig;
+//import by.pvt.core.config.HibernateJavaConfig;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
 
 
 public class Lesson_21 {
+    @Autowired
     private SessionFactory sessionFactory;
 
-    public Lesson_21() {
-        sessionFactory = HibernateJavaConfig.getSessionFactory();
-    }
+//    public Lesson_21() {
+//        sessionFactory = HibernateJavaConfig.getSessionFactory();
+//    }
     public Double getMoneyWorks(LocalDate start, LocalDate end)
     {
         Session session = sessionFactory.openSession();
