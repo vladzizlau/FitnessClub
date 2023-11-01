@@ -1,7 +1,6 @@
 package by.pvt.core;
 
 import by.pvt.core.config.HibernateConfig;
-import by.pvt.core.config.UserConfig;
 import by.pvt.core.domain.*;
 import by.pvt.core.repository.*;
 import by.pvt.core.repository.interfaces.InterfaceDbDiscounts;
@@ -12,10 +11,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class Main {
@@ -66,20 +67,25 @@ public class Main {
 //  UserService user = applicationContext.getBean(UserService.class);
 //  user.getAllUsers();
 // Здание 26
-        ApplicationContext ac = new AnnotationConfigApplicationContext(HibernateConfig.class);
-        DiscountService ds = ac.getBean("discountService", DiscountService.class);
+//        ApplicationContext ac = new AnnotationConfigApplicationContext(HibernateConfig.class);
+//        DiscountService ds = ac.getBean("discountService", DiscountService.class);
 
-        LocalDate start = LocalDate.of(1914, 12, 31);
-        LocalDate end = LocalDate.of(2023, 9, 25);
-        Discounts discounts = new Discounts();
-        discounts.setId(1);
-        discounts.setDiscount_start(start);
-        discounts.setDiscount_stop(end);
-        discounts.setDiscount_value(new BigDecimal(50));
-        discounts.setClient_status("Good_client");
-
-        ds.addDiscount(discounts);
+//        LocalDate start = LocalDate.of(1914, 12, 31);
+//        LocalDate end = LocalDate.of(2023, 9, 25);
+//        Discounts discounts = new Discounts();
+//        discounts.setId(1);
+//        discounts.setDiscount_start(start);
+//        discounts.setDiscount_stop(end);
+//        discounts.setDiscount_value(new BigDecimal(50));
+//        discounts.setClient_status("Good_client");
+//
+//        ds.addDiscount(discounts);
         //----------------------
+//Задание 27
+        transaction();
+
+        //-----------
+
 
 //        ApplicationContext app = new AnnotationConfigApplicationContext(HibernateConfig.class);
 //        RegistrationService rs = app.getBean(RegistrationService.class);
@@ -87,23 +93,23 @@ public class Main {
 //        rs.getAll();
 
 
-
-
-
-
-
-
-
     }
 
-    public static void startLesson23() {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
-        Lesson_23 lesson23 = applicationContext.getBean("firstApp", Lesson_23.class);
-        long before = System.nanoTime();
-        lesson23.hello();
-        long after = System.nanoTime();
-        System.out.println(after - before);
+    public static void transaction(){
+        ApplicationContext ac = new AnnotationConfigApplicationContext(HibernateConfig.class);
+//        ClientService clientService = ac.getBean(ClientService.class);
+        VisitService vs = ac.getBean(VisitService.class);
+        vs.transactional(1L);
+
     }
+//    public static void startLesson23() {
+//        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
+//        Lesson_23 lesson23 = applicationContext.getBean("firstApp", Lesson_23.class);
+//        long before = System.nanoTime();
+//        lesson23.hello();
+//        long after = System.nanoTime();
+//        System.out.println(after - before);
+//    }
 
     public static void startLesson23_2() {
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Lesson_23_2.class);
