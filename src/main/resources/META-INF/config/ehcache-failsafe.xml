@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ehcache>
+    <defaultCache name="by.pvt.core.domain.Visits"
+            maxElementsInMemory="100"
+            eternal="false"
+            timeToIdleSeconds="2"
+            timeToLiveSeconds="2"
+            maxElementsOnDisk="100"
+            diskExpiryThreadIntervalSeconds="2"
+            memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </defaultCache>
+</ehcache>
