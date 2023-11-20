@@ -1,16 +1,8 @@
 package by.pvt.core.repository;
 
-import by.pvt.core.config.HibernateJPAConfig;
-import by.pvt.core.domain.Guest;
-import by.pvt.core.domain.PremiumUser;
-import by.pvt.core.domain.User;
-import by.pvt.core.domain.Visits;
-import by.pvt.core.repository.interfaces.InterfaceDbUserRepo;
+//import by.pvt.core.config.HibernateJPAConfig;
 
-import jakarta.persistence.EntityManager;
-import java.util.List;
-
-public class DBUserRepoJPA { // implements InterfaceDbUserRepo {
+//public class DBUserRepoJPA implements InterfaceDbUserRepo {
 //   @Override
 //    public void addUSer(User user) {
 //        EntityManager entityManager = HibernateJPAConfig.getEntityManager();
@@ -74,4 +66,4 @@ public class DBUserRepoJPA { // implements InterfaceDbUserRepo {
 //    }
 
 
-}
+//}

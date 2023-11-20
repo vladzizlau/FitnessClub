@@ -1,22 +1,13 @@
 package by.pvt.core;
 
-import by.pvt.core.config.HibernateConfig;
+
 import by.pvt.core.domain.*;
 import by.pvt.core.repository.*;
-import by.pvt.core.repository.interfaces.InterfaceDbDiscounts;
 import by.pvt.core.service.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-
-import java.time.LocalDate;
-import java.util.List;
 
 
 public class Main {
@@ -63,8 +54,8 @@ public class Main {
 //        startLesson23();
 //        startLesson23_2();
 
-//  ApplicationContext applicationContext = new AnnotationConfigApplicationContext(UserConfig.class);
-//  UserService user = applicationContext.getBean(UserService.class);
+//  ApplicationContext applicationContext = new AnnotationConfigApplicationContext();
+//  ClientService user = applicationContext.getBean(ClientService.class);
 //  user.getAllUsers();
 // Здание 26
 //        ApplicationContext ac = new AnnotationConfigApplicationContext(HibernateConfig.class);
@@ -82,26 +73,21 @@ public class Main {
 //        ds.addDiscount(discounts);
         //----------------------
 //Задание 27
-        transaction();
+//        transaction();
+//    System.out.println("hello");
 
-        //-----------
+//        SpringApplication.run(VisitService.class, args);
 
 
-//        ApplicationContext app = new AnnotationConfigApplicationContext(HibernateConfig.class);
-//        RegistrationService rs = app.getBean(RegistrationService.class);
+    }
+
+//    public static void transaction(){
+//        ApplicationContext ac = new AnnotationConfigApplicationContext(HibernateConfig.class);
+////        ClientService clientService = ac.getBean(ClientService.class);
+//        VisitService vs = ac.getBean(VisitService.class);
+////        vs.transactional(1L);
 //
-//        rs.getAll();
-
-
-    }
-
-    public static void transaction(){
-        ApplicationContext ac = new AnnotationConfigApplicationContext(HibernateConfig.class);
-//        ClientService clientService = ac.getBean(ClientService.class);
-        VisitService vs = ac.getBean(VisitService.class);
-        vs.transactional(1L);
-
-    }
+//    }
 //    public static void startLesson23() {
 //        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
 //        Lesson_23 lesson23 = applicationContext.getBean("firstApp", Lesson_23.class);
@@ -112,12 +98,12 @@ public class Main {
 //    }
 
     public static void startLesson23_2() {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Lesson_23_2.class);
-        Lesson_23_2 lesson_23_2 = applicationContext.getBean(Lesson_23_2.class);
-        long before = System.nanoTime();
-        lesson_23_2.sendMessage();
-        long after = System.nanoTime();
-        System.out.println(after - before);
+//        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Lesson_23_2.class);
+//        Lesson_23_2 lesson_23_2 = applicationContext.getBean(Lesson_23_2.class);
+//        long before = System.nanoTime();
+//        lesson_23_2.sendMessage();
+//        long after = System.nanoTime();
+//        System.out.println(after - before);
     }
 
 

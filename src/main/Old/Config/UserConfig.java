@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 //@Configuration
 //@ComponentScan("by.pvt.core")
-public class UserConfig {
+//public class UserConfig {
 //    @Bean
 //    public UserService userService() {
 //        return new UserService(dbUserRepoHibernate());
@@ -55,4 +55,4 @@ public class UserConfig {
 //    public DBOfficeRepoHibernate dbOfficeRepoHibernate() {
 //        return new DBOfficeRepoHibernate();
 //    }
-}
+//}

@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 
-@Table(schema = "guest", name = "user")
+@Table(schema = "guest", name = "client")
 @Where(clause = "status = 'Premium'")
 @Data
 @Entity

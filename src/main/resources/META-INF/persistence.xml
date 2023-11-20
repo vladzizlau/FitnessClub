@@ -4,22 +4,22 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-<!-- Настройка единицы хранения   -->
-<!--    <persistence-unit name="FitnessClub">-->
-<!--&lt;!&ndash;        Указываем класс,который будет хранится контексте постоянства&ndash;&gt;-->
+<!-- Настройка единицы хранения-->
+    <persistence-unit name="FitnessClub">
+<!--        Указываем класс,который будет хранится контексте постоянства-->
 <!--        <class>by.pvt.core.domain.User</class>-->
-<!--&lt;!&ndash;        Набор свойств&ndash;&gt;-->
-<!--        <properties>-->
-<!--            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/fitnessclub"/>-->
-<!--            <property name="jakarta.persistence.jdbc.user" value="postgres" />-->
-<!--            <property name="jakarta.persistence.jdbc.password" value="sa" />-->
-<!--&lt;!&ndash;             При запуске hibernate не создавать ничего нового&ndash;&gt;-->
-<!--            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>-->
-<!--            <property name="hibernate.show_sql" value="true" />-->
-<!--            <property name="hibernate.hbm2ddl.auto" value="update" />-->
-<!--&lt;!&ndash;             Форматировать SQL&ndash;&gt;-->
-<!--            <property name="hibernate.format_sql" value="true"/>-->
-<!--            <property name="hibernate.use_sql_comments" value="true"/>-->
-<!--        </properties>-->
-<!--    </persistence-unit>-->
+<!--        Набор свойств-->
+        <properties>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/fitnessclub"/>
+            <property name="jakarta.persistence.jdbc.user" value="postgres" />
+            <property name="jakarta.persistence.jdbc.password" value="sa" />
+<!--             При запуске hibernate не создавать ничего нового-->
+            <property name="jakarta.persistence.schema-generation.database.action" value="none"/>
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+<!--             Форматировать SQL-->
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+        </properties>
+    </persistence-unit>
 </persistence>

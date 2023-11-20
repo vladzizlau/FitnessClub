@@ -1,13 +1,10 @@
 package by.pvt.core.repository;
 
 //import by.pvt.core.config.HibernateJavaConfig;
-import by.pvt.core.domain.Guest;
+import by.pvt.core.domain.Client;
 import by.pvt.core.domain.PremiumUser;
-import by.pvt.core.domain.User;
 import by.pvt.core.domain.Visits;
-import by.pvt.core.repository.interfaces.InterfaceDbUserRepo;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import by.pvt.core.repository.interfaces.InterfaceDbClientRepo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -20,14 +17,14 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import java.util.List;
 @Repository
-public class DBUserRepoHibernate implements InterfaceDbUserRepo {
-
+public class DBClientRepoHibernate implements InterfaceDbClientRepo {
+    @Autowired
     private SessionFactory sessionFactory;
 
 
 
     @Override
-    public void addUSer(User user) {
+    public void addUSer(Client user) {
         Session session = sessionFactory.openSession();
         session.getTransaction().begin();
         session.persist(user);
@@ -36,25 +33,25 @@ public class DBUserRepoHibernate implements InterfaceDbUserRepo {
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public List<Client> getAllUsers() {
         Session session = sessionFactory.openSession();
         session.getTransaction().begin();
-        Query query = session.createQuery("select u from User u");
-        List<User> allusers = query.getResultList();
+        Query query = session.createQuery("select c from Client c");
+        List<Client> allusers = query.getResultList();
         return allusers;
     }
 
     @Override
-    public User findById(Long userID) {
+    public Client findById(Long userID) {
         Session session = sessionFactory.openSession();
-        User user = session.get(User.class, userID);
+        Client user = session.get(Client.class, userID);
         return user;
     }
 
     @Override
     public void delUser(long id) {
         Session session = sessionFactory.openSession();
-        User user = session.get(User.class, id);
+        Client user = session.get(Client.class, id);
         session.getTransaction().begin();
         session.remove(user);
         session.close();
@@ -70,11 +67,11 @@ public class DBUserRepoHibernate implements InterfaceDbUserRepo {
 
     @Override
     //Поиск по имени
-    public User getByName(String name) {
+    public Client getByName(String name) {
         Session session = sessionFactory.openSession();
-        Query query = session.createQuery("select u from User u where u.firstName = :name");
+        Query query = session.createQuery("select u from Client u where u.firstName = :name");
         query.setParameter("name", name);
-        return (User) query.getSingleResult();
+        return (Client) query.getSingleResult();
     }
 
     @Override
@@ -87,26 +84,26 @@ public class DBUserRepoHibernate implements InterfaceDbUserRepo {
     }
 
     @Override
-    public List<User> getUserForAge(int minAge, int maxAge) {
+    public List <Client> getUserForAge(int minAge, int maxAge) {
         EntityManager entityManager = sessionFactory.createEntityManager();
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
-        Root<User> user = criteriaQuery.from((User.class));
+        CriteriaQuery<Client> criteriaQuery = criteriaBuilder.createQuery(Client.class);
+        Root<Client> user = criteriaQuery.from((Client.class));
 
         criteriaQuery.select(user).where(criteriaBuilder.between(user.get("age"), minAge, maxAge));
-        List<User> u = entityManager.createQuery(criteriaQuery).getResultList();
+        List<Client> u = entityManager.createQuery(criteriaQuery).getResultList();
         return u;
     }
 
     @Override
-    public List<Guest> getVisitsByNameAndAge(String name, Integer age) {
+    public List<Client> getVisitsByNameAndAge(String name, Integer age) {
         EntityManager entityManager = sessionFactory.createEntityManager();
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Guest> cQuery = criteriaBuilder.createQuery(Guest.class);
-        Root<Guest> guest = cQuery.from(Guest.class);
+        CriteriaQuery<Client> cQuery = criteriaBuilder.createQuery(Client.class);
+        Root<Client> guest = cQuery.from(Client.class);
         cQuery.select(guest).where(criteriaBuilder.and(criteriaBuilder.equal(guest.get("firstName"), name),
                 criteriaBuilder.gt(guest.get("age"), age)));
-        List<Guest> guestList = entityManager.createQuery(cQuery).getResultList();
+        List<Client> guestList = entityManager.createQuery(cQuery).getResultList();
 //        guestList.forEach(s -> System.out.println(s.getFirstVisitDate() + " " + s.getLastVisitDate()));
         return guestList;
     }

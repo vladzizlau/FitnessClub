@@ -1,6 +1,5 @@
 package by.pvt.core.service;
 
-import by.pvt.core.config.HibernateConfig;
 import by.pvt.core.domain.Client;
 import by.pvt.core.domain.Visits;
 import by.pvt.core.dto.VisitCreateRequest;
@@ -18,13 +17,17 @@ import java.util.Optional;
 
 @Service
 public class VisitService implements IVisits {
-    @Autowired
+
+
     private VisitsRepository repository;
 
-//    @Autowired
-//    public VisitService(VisitsRepository repository) {
-//        this.repository = repository;
-//    }
+    private ClientService clientService;
+    @Autowired
+    public VisitService(VisitsRepository repository, ClientService clientService) {
+        this.repository = repository;
+        this.clientService = clientService;
+    }
+
 
     @Transactional
     @Override
@@ -72,11 +75,9 @@ public void delByID(Long id){
 
     @Transactional
     public void transactional(long clientid){
-        ApplicationContext ac = new AnnotationConfigApplicationContext(HibernateConfig.class);
-        ClientService clientService = ac.getBean(ClientService.class);
+//        ApplicationContext ac = new AnnotationConfigApplicationContext(HibernateConfig.class);
+//        ClientService clientService = ac.getBean(ClientService.class);
         Client client1 = clientService.getById(clientid);
-
-
         int countVisit = 0;
         List<Visits> getList = getAll();
         for (Visits visits : getList) {

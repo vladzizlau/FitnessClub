@@ -3,13 +3,9 @@ package by.pvt.core.service;
 import by.pvt.core.domain.Office;
 import by.pvt.core.domain.OfficeSubSelect;
 import by.pvt.core.repository.DBOfficeRepoHibernate;
-import lombok.RequiredArgsConstructor;
+import by.pvt.core.service.iface.IOffice;
 import org.springframework.stereotype.Service;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Root;
 import java.math.BigDecimal;
 import java.util.List;
 @Service

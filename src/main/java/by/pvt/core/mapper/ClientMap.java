@@ -12,5 +12,6 @@ import java.util.List;
 public interface ClientMap
     {
     ClientResponse toResponse(Client client);
-    Client toEntity(ClientResponse clientResponse);
+    Client toEntity(ClientRequest request);
+    List<ClientResponse> toResponseList (List<Client> clients);
 }

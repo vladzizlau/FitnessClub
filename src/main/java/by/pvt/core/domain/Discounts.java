@@ -1,5 +1,5 @@
 package by.pvt.core.domain;
-//Скидки
+//Скидки (sales)
 
 
 
@@ -19,10 +19,10 @@ public class Discounts {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column(unique = true)
+    private String name;
     private BigDecimal discount_value;
     private LocalDate discount_start;
     private LocalDate discount_stop;
     private String client_status;
-
-
 }

@@ -1,4 +1,4 @@
-package by.pvt.core.service;
+package by.pvt.core.service.iface;
 
 import by.pvt.core.domain.OfficeSubSelect;
 

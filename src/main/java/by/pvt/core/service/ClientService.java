@@ -4,8 +4,8 @@ import by.pvt.core.domain.Client;
 import by.pvt.core.domain.PremiumUser;
 import by.pvt.core.domain.Visits;
 import by.pvt.core.dto.ClientResponse;
+import by.pvt.core.mapper.ClientMap;
 import by.pvt.core.repository.DBClientRepoHibernate;
-
 import by.pvt.core.repository.DbClientRepository;
 import by.pvt.core.service.iface.IClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +13,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ClientService implements IClient {
+
     private DBClientRepoHibernate clientRepository;
-    @Autowired
+
     private DbClientRepository repository;
 
 
+    private ClientMap clientMap;
 
     @Autowired
-    public ClientService(DBClientRepoHibernate userRepository) {
-        this.clientRepository = userRepository;
-
+    public ClientService(DBClientRepoHibernate clientRepository, DbClientRepository repository, ClientMap clientMap) {
+        this.clientRepository = clientRepository;
+        this.repository = repository;
+        this.clientMap = clientMap;
     }
 
     @Override
@@ -72,14 +76,26 @@ public class ClientService implements IClient {
     }
 
     public void setStatus(Client client, String s) {
-       client.setStatus(s);
+        client.setStatus(s);
         repository.save(client);
 
     }
 
+    public List<Client> getAll() {
+        return repository.findAll();
+    }
 
-//    public List<ClientResponse> getAllResponse(){
-//         List <ClientResponse> cr = getAllUsers();
-//    }
+    public Client getClientByUserName(String userame){
+       return repository.getCleintByUser(userame);
+    }
+
+
+    public List<ClientResponse> getAllResponse() {
+//        List<Client> all = getAllUsers();
+//        List<Client> cr = getAll();
+//        List<ClientResponse>clientResponses = cr.stream().map(client -> clientMap.toResponse(client)).collect(Collectors.toList());
+//        return clientResponses;
+        return clientMap.toResponseList(getAll());
+    }
 
 }

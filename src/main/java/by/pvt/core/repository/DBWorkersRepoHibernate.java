@@ -1,7 +1,7 @@
 package by.pvt.core.repository;
 
 
-import by.pvt.core.config.HibernateConfig;
+//import by.pvt.core.config.HibernateConfig;
 import by.pvt.core.domain.*;
 import by.pvt.core.repository.interfaces.InterfaceDbWorkersRepo;
 import lombok.AllArgsConstructor;

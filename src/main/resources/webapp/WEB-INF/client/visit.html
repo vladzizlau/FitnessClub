@@ -1,54 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Home</title>
-<h1 th:text ="${title}"></h1>
+    <h1 th:text="${title}"></h1>
 </head>
 <body>
 
 <div>
     <input type="submit" form="getall">
-<form id="getall" th:action="@{/client/main}" th:object="${vis}" method="GET">
-    <fieldset>
+    <form id="getall" th:action="@{/client/main}" th:object="${visit}" method="get">
+        <fieldset>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>AmountSum</th>
+                    <th>Client_Id</th>
+                    <th>Offer_Id</th>
+                    <th>Last_Visit</th>
+                </tr>
+                <tr th:each="vis : ${visits}">
+                    <td th:text="${vis.id}"></td>
+                    <td th:text="${vis.amountSum}"></td>
+                    <td th:text="${vis.client.id}"></td>
+                    <td th:text="${vis.id_Offer}"></td>
+                    <td th:text="${vis.lastVisit}"></td>
+                </tr>
+            </table>
+        </fieldset>
 
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>AmountSum</th>
-                <th>Client_Id</th>
-                <th>Offer_Id</th>
-                <th>Last_Visit</th>
-            </tr>
-            <tr th:each="visit : ${visits}">
-                <td th:text="${visit.id}"></td>
-                <td th:text="${visit.amountSum}"></td>
-                <td th:text="${visit.client.id}"></td>
-                <td th:text="${visit.id_Offer}"></td>
-                <td th:text="${visit.lastVisit}"></td>
-            </tr>
-        </table>
-    </fieldset>
-
-</form>
+    </form>
 </div>
 <br>
 <br>
 <br>
 
 <div>
-<form th:action="@{/client/addvisit}"  method="get">
-<fieldset>
+    <form th:action="@{/client/addvisit}" method="post">
+        <fieldset>
 
-                    <p>AmountSum: <input type="text" th:value="${VisitCreateRequest.amountSum}" placeholder="AmountSum" > </p>
+            <p>AmountSum: <input type="text" th:field="${amountSum}" placeholder="AmountSum"></p>
 
-                    <p>lastVisit: <input type="text" th:value="${VisitCreateRequest.lastVisit}" placeholder="Last_Visit"> </p>
+            <p>lastVisit: <input type="text" th:field="${lastVisit}" placeholder="Last_Visit"></p>
 
-                    <p>id_offer: <input type="text" th:value="${VisitCreateRequest.id_Offer}" placeholder="Id_Offer"></p>
+            <p>id_offer: <input type="text" th:field="${id_Offer}" placeholder="Id_Offer"></p>
 
-    <input type="submit" value="add Visit" >
-</fieldset>
-</form>
+            <input type="submit" value="add Visit">
+        </fieldset>
+    </form>
 </div>
 
 <div>

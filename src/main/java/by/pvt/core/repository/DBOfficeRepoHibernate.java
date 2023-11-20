@@ -3,7 +3,7 @@ package by.pvt.core.repository;
 import by.pvt.core.domain.Office;
 import by.pvt.core.domain.OfficeSubSelect;
 import by.pvt.core.repository.interfaces.InterfaceDbOfficeRepo;
-import net.sf.ehcache.search.expression.Criteria;
+//import net.sf.ehcache.search.expression.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
