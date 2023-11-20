@@ -41,7 +41,7 @@ public class Client {
     private LocalDate firstVisitDate;
     @Column(name = "last_visit_date", length = 30)
     private LocalDate lastVisitDate;
-    @Column(name = "amount_sum")
+    private String role;
 
     @OneToMany
     @JoinColumn(name = "visits_id")
